@@ -5,7 +5,7 @@ OBJECTS = obj/SerialKDPProxy.o obj/kdp_serial.o
 CFLAGS = -Wall
 
 # Phony rules:
-all: $(PROGRAM)
+all: dirs $(PROGRAM)
 
 clean:
 	rm -f $(PROGRAM) $(OBJECTS)
@@ -21,4 +21,7 @@ obj/SerialKDPProxy.o: src/SerialKDPProxy.c
 obj/kdp_serial.o: src/kdp_serial.c
 	$(COMPILE.c) -g -D_BSD_SOURCE $(OUTPUT_OPTION) $<
 
+.PHONY:
+dirs:
+	mkdir -p obj sym
 
